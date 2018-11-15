@@ -1,0 +1,245 @@
+---
+title: "CBW - IATH"
+output: html_document
+---
+
+## Association Rule analysis
+
+```{r data reading,echo=FALSE}
+suppressMessages( library(dplyr))
+suppressMessages(library(ggplot2))
+
+### Loading the data
+load("text_data_sent.Rdata")
+
+bess <- read.csv("CBW_Bess_tags_final.csv", stringsAsFactors = FALSE)
+
+#"bio03_a626" "bio22_a628" "bio25_a628"
+bess_title <- unique(bess[c("biographyID","collectionID","author","personaName")])
+names(bess_title)[names(bess_title) == "collectionID"] <- "CollectionID"
+names(bess_title)[names(bess_title) == "biographyID"] <- "BiographyID"
+bess_title$key <- paste0(bess_title$CollectionID,"_",bess_title$BiographyID)
+
+### Creating a unique id
+
+text_data_sent$key <- paste0(text_data_sent$CollectionID,"_",text_data_sent$BiographyID)
+
+avg_sentiment <- group_by(text_data_sent,key) %>% 
+                  summarize(average_score = mean(score, na.rm = TRUE)) %>%
+                    arrange(average_score)
+
+avg_sentiment <- suppressMessages(left_join(avg_sentiment,bess_title))
+
+```
+
+#### Top 5 Authors
+
+
+```{r Top Authors, echo=FALSE}
+
+### Top Authors 
+
+top_authors <-
+bess_title %>% group_by(author) %>% summarise(count = n()) %>%
+  arrange(desc(count)) %>% head(6) %>% filter(author != "Unknown")
+
+top_authors$author
+```
+
+##### Sentiment across Narrative time
+```{r Sentiment pattern across paragraphs, echo = FALSE}
+
+text_all <- suppressMessages( left_join(text_data_sent,bess_title))
+
+ggplot(data = filter(text_all, author %in% top_authors$author)
+       , aes(x = ParagraphNo, y = score, col = author)) + geom_line()+ scale_fill_continuous(guide = guide_legend()) +
+    theme(legend.position="bottom")
+
+
+```
+
+#### Standardizing the time line
+
+Instead of having the absolute count of the paragraph, we can having the time normalized between 0 and 1. This will enable us to compare different biographies irrespective of their paragraph length
+
+
+#### Overall analysis for all the Authors
+```{r Overall analysis, echo = FALSE}
+
+max_para_no <- group_by(text_all,CollectionID,BiographyID) %>% summarise(max(ParagraphNo))
+
+
+text_all <- suppressMessages(left_join( text_all,max_para_no))
+text_all$time <- text_all$ParagraphNo/text_all$`max(ParagraphNo)`
+
+
+
+overall <- group_by(text_all,time) %>% summarise(score = mean(score))
+
+ggplot(data =overall
+       , aes(x = time, y = score)) + geom_line()
+
+
+
+```
+
+
+#### Sentiment across Narrative time - Standardized for Top Authors
+```{r Sentiment std pattern across paragraphs, echo = FALSE}
+
+
+
+ggplot(data = filter(text_all, author %in% top_authors$author)
+       , aes(x = time, y = score, col = author)) + geom_point() +
+  scale_fill_continuous(guide = guide_legend()) +
+    theme(legend.position="bottom")
+
+
+```
+
+#### Sentiment across Narrative time - Standardized for Top Persona
+```{r Sentiment Persona, echo = FALSE}
+top_persona <-
+  text_all %>% group_by_("personaName") %>% summarise(count = n()) %>%
+  arrange(desc(count)) %>% head(10) %>% filter(personaName != "Unknown")
+
+#top_persona$personaName
+pesona_names <- top_persona$personaName[1:5]
+
+
+ggplot(data = filter(text_all, personaName %in% pesona_names)
+       , aes(x = time, y = score, col = personaName)) + geom_point() +
+  scale_fill_continuous(guide = guide_legend()) +
+    theme(legend.position ="bottom")
+
+
+```
+\n \n
+
+
+
+#### Sentiment across Narrative time - Sister Dora
+
+```{r Sentiment Persona 1, echo = FALSE}
+
+pesona_names <- top_persona[1,]
+
+
+ggplot(data = filter(text_all, personaName %in% pesona_names)
+       , aes(x = time, y = score, col = personaName)) + geom_point() +
+  scale_fill_continuous(guide = guide_legend()) +
+    theme(legend.position ="bottom")
+
+```
+
+
+#### Sentiment across Narrative time - Agnes Weston
+
+```{r Sentiment Persona 2, echo = FALSE}
+
+pesona_names <- top_persona[3,]
+
+ggplot(data = filter(text_all, personaName %in% pesona_names)
+       , aes(x = time, y = score, col = personaName)) + geom_point() +
+  scale_fill_continuous(guide = guide_legend()) +
+    theme(legend.position ="bottom")
+
+```
+
+#### Sentiment Distribution
+
+```{r Sentiment dist, echo = FALSE}
+
+
+text_data_sent$sentiment <- as.character(text_data_sent$sentiment)
+text_data_sent_withoutNULL <- text_data_sent %>% filter(sentiment != "NULL")
+
+
+ggplot(data.frame(table(text_data_sent_withoutNULL$sentiment)),aes(x = Var1,y=Freq)) + geom_bar(stat = "identity") + xlab("Sentiment") +
+    theme(legend.position ="bottom")
+
+
+
+
+```
+
+#### Sentiment Distribution Across Personas
+
+```{r Sentiment dist 2, echo = FALSE}
+
+
+ggplot(data = filter(text_all, personaName %in% top_persona$personaName),
+       aes(x = reorder(personaName, ParagraphNo) , y = ParagraphNo , fill = sentiment)) + 
+  geom_bar(stat = "identity") + 
+  xlab("Personas")+
+    theme(legend.position ="bottom")
+
+
+
+```
+
+
+#### Sentiment changes for Authors across time - Mean
+
+```{r Sentiment change, echo = FALSE}
+
+text_all$time_slot <- cut(text_all$time,seq(0,1,0.05))
+heat_map_time_slot <- group_by(text_all,author,time_slot) %>% 
+              summarize(score_mean = mean(score,na.rm = TRUE))
+
+ggplot(data = heat_map_time_slot,
+       #, aes(x = time, y = score, col = author)) +
+  aes(x = author, y = time_slot,fill = score_mean)) + geom_tile()+
+  scale_fill_gradient(low = "red", high = "green")    +
+    theme(legend.position ="bottom")
+  
+
+
+```
+
+
+
+#### Sentiment changes for Authors across time
+
+```{r AUTHORS, echo = TRUE}
+
+sort(unique(text_all$author))
+
+
+```
+
+
+#### Sentiment changes for Authors across time
+
+```{r Similar authors, echo = F}
+
+#### Ordering by positive and negative authors
+library(stringdist)
+
+
+authors <- sort(unique(text_all$author))
+author_list <- list()
+
+for(each_authors in authors){
+  authors_check <- authors[!authors %in% each_authors]
+  dist_vals <- stringdist(each_authors,authors_check)
+  
+  author_list[[each_authors]] <- authors_check[which(dist_vals < 7)]
+  
+  
+}
+
+
+```
+
+
+
+
+#### Similar Authors
+
+```{r similar authors, echo = F}
+
+#### Ordering by positive and negative authors
+author_list[unlist(lapply(author_list,function(x)length(x)>0))]
+
+```

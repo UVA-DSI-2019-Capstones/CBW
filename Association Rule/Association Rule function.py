@@ -1,5 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Nov 20 13:13:54 2018
+
+@author: Murugesan
+"""
+
+
 ################## IMPORTING REQUIRED PACKAGES ########################
 import pandas as pd
+import re
 #import numpy as np
 #import os
 import string
@@ -42,11 +51,13 @@ def text_pre_process(text_data,unique_id_col, text_col,lemma = True,bi_grams_det
     
     if(lemma):
         text_data['Word_split'] = \
-        text_data[text_col].apply(lambda x: [wordnet_lemmatizer.lemmatize(words) for words in word_tokenize(x) if words not in string.punctuation])
+        text_data[text_col].apply(lambda x: [re.sub(r'[\W_]+', '',wordnet_lemmatizer.lemmatize(words).encode('ascii',errors='ignore').decode()) \
+                 for words in word_tokenize(x) if words not in string.punctuation])
         
     else:
         text_data['Word_split'] = \
-        text_data[text_col].apply(lambda x: [words for words in word_tokenize(x) if words not in string.punctuation])
+        text_data[text_col].apply(lambda x: [re.sub(r'[\W_]+', '',words.encode('ascii',errors='ignore').decode()) \
+                for words in word_tokenize(x) if words not in string.punctuation])
       
     
     
@@ -251,16 +262,28 @@ Text_final['Words_clean'] = Text_final.Word_splits.apply(lambda x: x.lower()).va
 Words = Text_final[['Unique_id','Words_clean']].drop_duplicates().set_index('Unique_id')['Words_clean'].rename('item_id')
 
 
+### Getting the most common POS for each of the word
+
+word_POS = Text_final[['Word_splits','POS']].groupby(['Word_splits'])['POS'].apply(lambda x: x.value_counts().index[0])
+
+word_POS_df = pd.DataFrame(word_POS)
+word_POS_df['Words'] = word_POS_df.index 
+
+###
+
 # Calling Association Rule function
 rules = association_rules(Words, 0.01)  
-
 
 ## Viewing the obtained result
 rules[rules.item_A == 'france']
 
 
+rules.to_csv(file_path+"\\Association_data.csv")
 
 
 
 
 
+
+### Include the persona-name in every paragraph
+### Tf-idf to find important words

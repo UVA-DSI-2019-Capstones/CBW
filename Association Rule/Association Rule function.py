@@ -37,7 +37,8 @@ bess_taggins[['collectionID','biographyID']].drop_duplicates().shape
 #(308, 2)
 #We have 308 unique combinations of collection ID and biography ID
 
-bess_taggins['Annotation'] = bess_taggins['Annotation'].str.replace(', ',',').str.replace(' ','_')
+#bess_taggins['Annotation'] = bess_taggins.
+bess_taggins['Annotation'] = bess_taggins['Annotation'].str.replace(', ',',').str.replace(' ','XXYYZZ')
 bess_taggins['Unique_id'] = bess_taggins.collectionID+"_"+bess_taggins.biographyID+"_"+bess_taggins.parano.apply(int).apply(str)
 
 
@@ -75,7 +76,7 @@ def text_pre_process(text_data,unique_id_col, text_col,lemma = True,bi_grams_det
     else:
         text_data['Word_split'] = \
         text_data[text_col].apply(lambda x: [re.sub(r'[\W_]+', '',words.encode('ascii',errors='ignore').decode()) \
-                for words in word_tokenize(x) if words not in string.punctuation])
+                for words in x.split(" ") if words not in string.punctuation])
       
     
     
@@ -310,3 +311,18 @@ rules.to_csv(file_path+"\\Association_data.csv")
 
 
 ##################### CALLING FUNCTION FOR BESS ANNOTATION DATA ##############
+
+
+
+### Calling all the created functions
+
+unique_id_col = 'Unique_id'
+text_col = 'Annotation'
+
+# Pre-processing
+text_data_words = text_pre_process(bess_association_data,unique_id_col, text_col,lemma = False,bi_grams_detect = False)
+
+## Removing stop words based on the find_stop_words function
+stop_words_list = find_stop_words(text_data_words)
+Text_final = text_data_words[~text_data_words.Word_splits.str.lower().isin(stop_words_list)]
+

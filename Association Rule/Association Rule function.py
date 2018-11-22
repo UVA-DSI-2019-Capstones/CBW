@@ -5,7 +5,6 @@ Created on Tue Nov 20 13:13:54 2018
 @author: Murugesan
 """
 
-
 ################## IMPORTING REQUIRED PACKAGES ########################
 import pandas as pd
 import re
@@ -13,7 +12,7 @@ import re
 #import os
 import string
 from nltk.corpus import stopwords
-from collections import Counter 
+from collections import Counter
 from itertools import combinations, groupby
 
 # functions to detect bi-grams
@@ -25,12 +24,31 @@ import nltk
 #nltk.download('wordnet')
 #nltk.download('averaged_perceptron_tagger')
 
+file_path = 'C:\\Users\\arvra\\Documents\\UVa files\\Classes\\Fall_18\\Capstone Project\\'
+
+#################### READING THE ANNOTATIONS OF EACH PARAGRAPH #################
+
+bess_taggins = pd.read_csv(file_path+"CBW_Bess_tags_final.csv")
+bess_taggins.head()
+
+bess_taggins = bess_taggins[~bess_taggins.parano.isna()]
+
+bess_taggins[['collectionID','biographyID']].drop_duplicates().shape
+#(308, 2)
+#We have 308 unique combinations of collection ID and biography ID
+
+bess_taggins['Annotation'] = bess_taggins['Annotation'].str.replace(', ',',').str.replace(' ','_')
+bess_taggins['Unique_id'] = bess_taggins.collectionID+"_"+bess_taggins.biographyID+"_"+bess_taggins.parano.apply(int).apply(str)
 
 
+bess_association_data = bess_taggins[['Unique_id','Annotation']].groupby(['Unique_id'])['Annotation'].apply(lambda x: ' '.join(x))
+
+bess_association_data = pd.DataFrame(bess_association_data)
+bess_association_data['Unique_id'] = bess_association_data.index
 
 #################### READING THE CONTENTS OF EACH PARAGRAPH ####################
 
-file_path = 'C:\\Users\\arvra\\Documents\\UVa files\\Classes\\Fall_18\\Capstone Project\\'
+
 textdatanew = pd.read_csv(file_path+"textdatanew.csv",encoding='ISO-8859-1')
 textdatanew.head()
 
@@ -118,7 +136,7 @@ def find_stop_words(text_data_words):
     stop_words_list.extend(most_common_words)
     
     ## Adding the least frequenct words
-    less_freq_words = text_data_words[text_data_words.Word_freq < 10].Word_splits.str.lower().values
+    less_freq_words = text_data_words[text_data_words.Word_freq < 5].Word_splits.str.lower().values
     stop_words_list.extend(less_freq_words)
     
     #### Removing words with less than or equal to two characters and making sure they are not numeric
@@ -254,6 +272,8 @@ text_data_words = text_pre_process(text_data,unique_id_col, text_col,lemma = Tru
 stop_words_list = find_stop_words(text_data_words)
 Text_final = text_data_words[~text_data_words.Word_splits.str.lower().isin(stop_words_list)]
 
+pd.DataFrame(stop_words_list).to_csv(file_path+"\\Stop_word_list.csv",index= False)
+
 ## Lower case of words
 Text_final['Words_clean'] = Text_final.Word_splits.apply(lambda x: x.lower()).values
     
@@ -281,9 +301,12 @@ rules[rules.item_A == 'france']
 rules.to_csv(file_path+"\\Association_data.csv")
 
 
-
-
-
-
 ### Include the persona-name in every paragraph
 ### Tf-idf to find important words
+### Update the files
+### Get a list of all Phrases for a word (same word can be Noun/Verb) and mention them with comma separted
+### Filter for all those your need and use
+
+
+
+##################### CALLING FUNCTION FOR BESS ANNOTATION DATA ##############

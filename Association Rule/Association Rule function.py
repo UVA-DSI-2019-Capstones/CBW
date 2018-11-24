@@ -31,21 +31,25 @@ file_path = 'C:\\Users\\arvra\\Documents\\UVa files\\Classes\\Fall_18\\Capstone 
 bess_taggins = pd.read_csv(file_path+"CBW_Bess_tags_final.csv")
 bess_taggins.head()
 
-bess_taggins = bess_taggins[~bess_taggins.parano.isna()]
+bess_taggins = bess_taggins[~((bess_taggins.parano.isna()) | (bess_taggins.Content.isnull()))]
 
 bess_taggins[['collectionID','biographyID']].drop_duplicates().shape
 #(308, 2)
 #We have 308 unique combinations of collection ID and biography ID
 
-#bess_taggins['Annotation'] = bess_taggins.
+bess_taggins['Annotation'] = bess_taggins.Type + "XYZ" + bess_taggins.Event + "XYZ" + bess_taggins.Content
 bess_taggins['Annotation'] = bess_taggins['Annotation'].str.replace(', ',',').str.replace(' ','XXYYZZ')
 bess_taggins['Unique_id'] = bess_taggins.collectionID+"_"+bess_taggins.biographyID+"_"+bess_taggins.parano.apply(int).apply(str)
-
 
 bess_association_data = bess_taggins[['Unique_id','Annotation']].groupby(['Unique_id'])['Annotation'].apply(lambda x: ' '.join(x))
 
 bess_association_data = pd.DataFrame(bess_association_data)
 bess_association_data['Unique_id'] = bess_association_data.index
+
+
+#### Getting the stage of life and Persona name for each of the Paragraphs
+
+
 
 #################### READING THE CONTENTS OF EACH PARAGRAPH ####################
 
@@ -70,12 +74,12 @@ def text_pre_process(text_data,unique_id_col, text_col,lemma = True,bi_grams_det
     
     if(lemma):
         text_data['Word_split'] = \
-        text_data[text_col].apply(lambda x: [re.sub(r'[\W_]+', '',wordnet_lemmatizer.lemmatize(words).encode('ascii',errors='ignore').decode()) \
+        text_data[text_col].apply(lambda x: [re.sub(r'[\W_-]+', '',wordnet_lemmatizer.lemmatize(words).encode('ascii',errors='ignore').decode()) \
                  for words in word_tokenize(x) if words not in string.punctuation])
         
     else:
         text_data['Word_split'] = \
-        text_data[text_col].apply(lambda x: [re.sub(r'[\W_]+', '',words.encode('ascii',errors='ignore').decode()) \
+        text_data[text_col].apply(lambda x: [re.sub(r'[\W_-]+', '',words.encode('ascii',errors='ignore').decode()) \
                 for words in x.split(" ") if words not in string.punctuation])
       
     
@@ -121,12 +125,12 @@ def text_pre_process(text_data,unique_id_col, text_col,lemma = True,bi_grams_det
 ############################END OF FUNCTION ###########################################################    
     
    
-def find_stop_words(text_data_words):    
+def find_stop_words(text_data_words,stop_threshold = 5,remove_top = 100):    
     ############ Identifying and Removing Stop words ######################################
     
     ### Tokenized Words
     word_counts = Counter(text_data_words.Word_splits.apply(lambda x: x.lower()))
-    most_common_words = [each[0] for each in word_counts.most_common(100)]
+    most_common_words = [each[0] for each in word_counts.most_common(remove_top)]
     
     
     text_data_words['Word_freq'] = text_data_words.Word_splits.apply(lambda x: word_counts[x.lower()])
@@ -137,7 +141,7 @@ def find_stop_words(text_data_words):
     stop_words_list.extend(most_common_words)
     
     ## Adding the least frequenct words
-    less_freq_words = text_data_words[text_data_words.Word_freq < 5].Word_splits.str.lower().values
+    less_freq_words = text_data_words[text_data_words.Word_freq < stop_threshold].Word_splits.str.lower().values
     stop_words_list.extend(less_freq_words)
     
     #### Removing words with less than or equal to two characters and making sure they are not numeric
@@ -322,7 +326,22 @@ text_col = 'Annotation'
 # Pre-processing
 text_data_words = text_pre_process(bess_association_data,unique_id_col, text_col,lemma = False,bi_grams_detect = False)
 
+## Replacing XYZ with '-' and XXYYZZ with '_'
+text_data_words['Word_splits'] = text_data_words.Word_splits.str.replace("XYZ","-").str.replace("XXYYZZ","_")
+text_data_words.head()
+
 ## Removing stop words based on the find_stop_words function
-stop_words_list = find_stop_words(text_data_words)
+stop_words_list = find_stop_words(text_data_words,1,0)
 Text_final = text_data_words[~text_data_words.Word_splits.str.lower().isin(stop_words_list)]
+
+## Lower case of words
+Text_final['Words_clean'] = Text_final.Word_splits.apply(lambda x: x.lower()).values
+
+# Creating Data to be read by Association rule
+Words = Text_final[['Unique_id','Words_clean']].drop_duplicates().set_index('Unique_id')['Words_clean'].rename('item_id')
+
+# Calling Association Rule function
+rules = association_rules(Words, 0.01)  
+
+rules.to_csv(file_path+"\\Association-BESS-taggings.csv")
 

@@ -48,7 +48,14 @@ bess_association_data['Unique_id'] = bess_association_data.index
 
 
 #### Getting the stage of life and Persona name for each of the Paragraphs
+stage_of_life = bess_taggins[bess_taggins.Type == 'stageOfLife'][['Annotation','Unique_id','personaName']]
 
+stage_of_life['New_annotation'] = " "+stage_of_life.personaName.str.replace(" ","XXSPACEXX")+"XXEOSXX"+stage_of_life.Annotation
+
+sof_annotation = stage_of_life.groupby(['Unique_id'])['New_annotation'].apply(lambda x: x.sum())
+
+sof_annotation = pd.DataFrame(sof_annotation)
+sof_annotation['Unique_id'] = sof_annotation.index
 
 
 #################### READING THE CONTENTS OF EACH PARAGRAPH ####################
@@ -63,6 +70,27 @@ text_data = textdatanew
 text_data['Unique_id'] = text_data.CollectionID+"_"+text_data.BiographyID+"_"+text_data.ParagraphNo.apply(str)
 unique_id_col = 'Unique_id'
 text_col = 'ParagraphText'
+
+text_data.shape
+text_data = pd.merge(text_data,sof_annotation,how = 'left',on = 'Unique_id')
+text_data.shape
+
+text_data.ParagraphText = text_data.New_annotation.apply(str) + " " + text_data.ParagraphText.apply(str)
+
+#################### Reading the text features from Bluemix #######################
+
+text_features = pd.read_csv(file_path+"text_features.csv",encoding='ISO-8859-1')
+text_features.head()
+
+
+text_features['Unique_id'] = text_features.CollectionID+"_"+text_features.BiographyID+"_"+text_features.ParagraphNo.apply(str)
+
+
+
+
+
+
+
 ##################### Data Preprocessing function #################################
 
 
@@ -96,9 +124,10 @@ def text_pre_process(text_data,unique_id_col, text_col,lemma = True,bi_grams_det
         text_data['Word_split_new'] = text_data.Word_split.apply(lambda x: bigram_phraser[x])
   
     else:
-        text_data['Word_split_new'] = text_data.Word_split
+        text_data['Word_split_new'] = text_data.Word_split.apply(lambda x: [each for each in x if each != ''])
   
   
+    text_data = text_data.reset_index()
     ############################# Extracting the POS tagging ###########################
     print("Extracting the POS tagging...")
     text_data['Word_split_POS'] = text_data.Word_split_new.apply(lambda x: nltk.pos_tag(x))
@@ -141,7 +170,7 @@ def find_stop_words(text_data_words,stop_threshold = 5,remove_top = 100):
     stop_words_list.extend(most_common_words)
     
     ## Adding the least frequenct words
-    less_freq_words = text_data_words[text_data_words.Word_freq < stop_threshold].Word_splits.str.lower().values
+    less_freq_words = text_data_words[(text_data_words.Word_freq < stop_threshold) & (len(text_data_words.Word_splits)<15)].Word_splits.str.lower().values
     stop_words_list.extend(less_freq_words)
     
     #### Removing words with less than or equal to two characters and making sure they are not numeric
@@ -235,7 +264,6 @@ def association_rules(order_item, min_support):
     # Get item pairs generator
     item_pair_gen          = get_item_pairs(order_item)
 
-
     # Calculate item pair frequency and support
     item_pairs              = freq(item_pair_gen).to_frame("freqAB")
     item_pairs['supportAB'] = item_pairs['freqAB'] / len(qualifying_orders) * 100
@@ -269,9 +297,8 @@ def association_rules(order_item, min_support):
 
 
 ### Calling all the created functions
-
 # Pre-processing
-text_data_words = text_pre_process(text_data,unique_id_col, text_col,lemma = True,bi_grams_detect = True)
+text_data_words = text_pre_process(text_data,unique_id_col, text_col,lemma = True,bi_grams_detect = False)
 
 ## Removing stop words based on the find_stop_words function
 stop_words_list = find_stop_words(text_data_words)
@@ -298,10 +325,6 @@ word_POS_df['Words'] = word_POS_df.index
 
 # Calling Association Rule function
 rules = association_rules(Words, 0.01)  
-
-## Viewing the obtained result
-rules[rules.item_A == 'france']
-
 
 rules.to_csv(file_path+"\\Association_data.csv")
 

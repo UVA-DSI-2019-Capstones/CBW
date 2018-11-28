@@ -170,7 +170,7 @@ def find_stop_words(text_data_words,stop_threshold = 5,remove_top = 100):
     stop_words_list.extend(most_common_words)
     
     ## Adding the least frequenct words
-    less_freq_words = text_data_words[(text_data_words.Word_freq < stop_threshold) & (len(text_data_words.Word_splits)<15)].Word_splits.str.lower().values
+    less_freq_words = text_data_words[(text_data_words.Word_freq < stop_threshold) & (text_data_words.Word_splits.str.len()< 35)].Word_splits.str.lower().values
     stop_words_list.extend(less_freq_words)
     
     #### Removing words with less than or equal to two characters and making sure they are not numeric
@@ -298,7 +298,7 @@ def association_rules(order_item, min_support):
 
 ### Calling all the created functions
 # Pre-processing
-text_data_words = text_pre_process(text_data,unique_id_col, text_col,lemma = True,bi_grams_detect = False)
+text_data_words = text_pre_process(text_data,unique_id_col, text_col,lemma = False,bi_grams_detect = False)
 
 ## Removing stop words based on the find_stop_words function
 stop_words_list = find_stop_words(text_data_words)
@@ -326,7 +326,7 @@ word_POS_df['Words'] = word_POS_df.index
 # Calling Association Rule function
 rules = association_rules(Words, 0.01)  
 
-rules.to_csv(file_path+"\\Association_data.csv")
+rules.to_csv(file_path+"\\Association_data_2.csv")
 
 
 ### Include the persona-name in every paragraph

@@ -1,0 +1,781 @@
+,class
+"writing, poetry ; type",0
+teaching adults ; type,0
+teaching arts or crafts ; type,0
+teaching children ; type,0
+teaching domestic skills ; type,0
+teaching literacy or reading ; type,0
+"teaching, religious ; type",0
+managing ; type,0
+learning language ; type,0
+"training, professional school or program ; type",0
+"introduction, first social encounter ; type",0
+"travel, government assignment ; type",0
+"travel, international ; type",0
+writing travel ; type,0
+"drawing, amateur ; type",0
+"training, practical experience ; type",0
+"education, arts ; type",0
+"meeting, public ; type",0
+"nursing, local amateur ; type",0
+"school, founding ; type",0
+"school, managing ; type",0
+reading ; type,0
+building construction ; type,0
+"public speaking, nonreligious ; type",0
+"business, managing ; type",0
+"mission, social, children ; type",0
+"business, starting ; type",0
+"project, new building ; type",0
+"painting, professional ; type",0
+"painting, amateur ; type",0
+"consultation, advice ; type",0
+"nursing, professional ; type",0
+"nursing, military ; type",0
+"project, new organization ; type",0
+"education, higher ; type",0
+"investing, finance ; type",0
+"education, secondary ; type",0
+writing diary ; type,0
+writing drama ; type,0
+writing essay or educational text ; type,0
+writing for children ; type,0
+"education, private lessons ; type",0
+writing history ; type,0
+writing a will ; type,0
+writing journalism ; type,0
+writing letter ; type,0
+writing music ; type,0
+"work accomplished, writing ; type",0
+"work accomplished, art ; type",0
+writing novel ; type,0
+writing other ; type,0
+writing biography ; type,0
+writing philosophy ; type,0
+writing autobiography ; type,0
+writing sermon or speech ; type,0
+exhibition ; type,0
+writing poetry ; type,0
+writing scientific ; type,0
+noon ; timeOfDay,1
+January 1789 ; dateSingle,1
+July 4 ; dateSingle,1
+July ; dateSingle,1
+June 15 ; dateSingle,1
+27 June 1743 ; dateSingle,1
+"October 15, 1917 ; dateSingle",1
+"March 14, 1872 ; dateSingle",1
+"March 30, 1844 ; dateSingle",1
+Dec 10 1872 ; dateSingle,1
+October ; dateSingle,1
+October 6 ; dateSingle,1
+"June 3, 1843 ; dateSingle",1
+June 21 ; dateSingle,1
+"contemporary observer, female ; agentType",2
+"rival, female ; agentType",2
+"contemporary observer, male ; agentType",2
+"female assistant, secretary ; agentType",2
+"rival, male ; agentType",2
+male group ; agentType,2
+"crowd, male ; agentType",2
+female servants ; agentType,2
+"female peer, historical ; agentType",2
+"female peer, contemporary ; agentType",2
+"female patient, poor ; agentType",2
+"royalty, female ; agentType",2
+female objects ; agentType,2
+female group ; agentType,2
+"male adult, other ; agentType",2
+"male assistant, secretary ; agentType",2
+"crowd, female ; agentType",2
+male companion on journey ; agentType,2
+"female companion, life partner ; agentType",2
+female companion on journey ; agentType,2
+"male companion, life partner ; agentType",2
+male coworkers ; agentType,2
+male objects ; agentType,2
+"male patient, poor ; agentType",2
+"male peer, contemporary ; agentType",2
+"male peer, historical ; agentType",2
+male servants ; agentType,2
+female coworkers ; agentType,2
+"royalty, male ; agentType",2
+"female adult, other ; agentType",2
+"sovereign, female ; agentType",2
+"sovereign, male ; agentType",2
+adult ; agentType,2
+lake ; locationSetting,3
+fort ; locationStructure,3
+"shop, millinery ; locationStructure",3
+"animal, farm ; agentType",3
+"animal, wild ; agentType",3
+opera house ; locationStructure,3
+"cad, exploiter ; agentType",3
+farm ; locationStructure,3
+village ; locationSetting,3
+forest ; locationSetting,3
+valley ; locationSetting,3
+canal ; locationSetting,3
+"con artist, trickster ; agentType",3
+hotel or inn ; locationStructure,3
+club ; locationStructure,3
+apartment ; locationStructure,3
+palace ; locationStructure,3
+castle ; locationStructure,3
+city ; locationSetting,3
+circus ; locationStructure,3
+park ; locationSetting,3
+town ; locationSetting,3
+garden ; locationSetting,3
+museum ; locationStructure,3
+monument ; locationStructure,3
+seaside ; locationSetting,3
+tower ; locationStructure,3
+"workshop, craft or artisan ; locationStructure",3
+theater ; locationStructure,3
+dawn ; timeOfDay,3
+salon ; locationStructure,3
+river ; locationSetting,3
+sea ; locationSetting,3
+resort or spa ; locationSetting,3
+abbey ; locationStructure,3
+"charity, village visiting ; type",3
+street ; locationSetting,3
+"studio, artist's ; locationStructure",3
+island ; locationSetting,3
+station ; locationStructure,3
+exhibition ; locationStructure,3
+county ; locationSetting,3
+"estate, country house ; locationStructure",3
+cottage ; locationStructure,3
+factory ; locationStructure,3
+hospital ; locationStructure,3
+stepmother ; agentType,4
+stepfather ; agentType,4
+suburb ; locationSetting,4
+suitor ; agentType,4
+slum ; locationSetting,4
+parish ; locationSetting,4
+descendant ; agentType,4
+monastery ; locationStructure,4
+41 BCE ; dateSingle,4
+foreigner ; agentType,4
+"grandchild, grandchildren ; agentType",4
+"patients, unspecified ; agentType",5
+"babies, unrelated, unspecified ; agentType",5
+"child, unrelated, unspecified ; agentType",5
+relatives unspecified ; agentType,5
+"crowd, unspecified ; agentType",5
+agricultural ; locationSetting,5
+ancestor ; agentType,5
+"beneficiaries, unspecified ; agentType",5
+"object, inanimate ; agentType",5
+servants gender unspecified ; agentType,5
+servant gender unspecified ; agentType,5
+"audience, unspecified ; agentType",5
+lodging ; locationStructure,5
+"baby, unrelated, unspecified ; agentType",5
+carriage ; locationStructure,5
+"lodging, institutional ; locationStructure",5
+"children, unrelated, unspecified ; agentType",5
+wagon or cart ; locationStructure,6
+violence between two or more others ; type,6
+investigation or detection of crime ; type,6
+violence by persona ; type,6
+travel due to illness ; type,6
+visit to battlefield ; type,6
+working as volunteer ; type,6
+"war, international ; type",6
+visiting by agents ; type,6
+"female patient, private or rich ; agentType",6
+joining group ; type,6
+visiting by persona ; type,6
+investigation of individual's identity or past ; type,6
+working as paid occupation ; type,6
+"keeping accounts, budget ; type",6
+travel for calling or work ; type,6
+"home, convalescent or institutional ; locationStructure",6
+"injury or wound, persona's ; type",6
+hosting by agents ; type,6
+"treaty, peace, or alliance ; type",6
+"holidays, religious other than Christmas ; type",6
+hired for job ; type,6
+hiding things or goods ; type,6
+hiding persona ; type,6
+gossip or spreading rumor ; type,6
+hosting by persona ; type,6
+trial in law court ; type,6
+gift receiving ; type,6
+"travel, short distance or frequent ; type",6
+violence against persona ; type,6
+foster or adoptive family unspecified ; agentType,6
+"household associate, not life partner or servant ; agentType",6
+"illness, family ; type",6
+imprisonment of agent ; type,6
+imprisonment of persona ; type,6
+imprisonment of persona's family or intimate ; type,6
+"food, feeding or eating ; type",6
+fleeing the law ; type,6
+festival or celebration ; type,6
+"injury or wound, agent's ; type",6
+friendship with male ; type,6
+fired from job ; type,6
+"sacred or divine, named ; agentType",6
+tomb or grave ; locationStructure,6
+"project, reform or new system ; type",6
+"service to family, assistant, arts ; type",6
+"purchase of property, house, land ; type",6
+quitting or resigning group ; type,6
+sending letter or message ; type,6
+quitting or resigning job ; type,6
+racial other ; agentType,6
+"rage, tantrum, or outburst by other ; type",6
+"rage, tantrum, or outburst by persona ; type",6
+receiving letter or message ; type,6
+"recognition, audience with ruler or leader ; type",6
+"recognition, event in honor ; type",6
+"service to family, assistant, clerical ; type",6
+"recognition, receiving award or prize ; type",6
+rejection by lover ; type,6
+rejection of lover ; type,6
+"renaming of others, nicknames ; type",6
+"renaming of others, proper ; type",6
+"renaming of persona, nickname ; type",6
+"renaming of persona, proper name ; type",6
+"renaming of persona, vocational name ; type",6
+rental of apartment or lodging ; type,6
+retirement from job or position ; type,6
+"sacred or divine, unidentified ; agentType",6
+ruin ; locationStructure,6
+"sacred or divine, epithet or indirect reference to known ; agentType",6
+recovery from illness ; type,6
+"service to family, assistant, scientific ; type",6
+procession or parade ; type,6
+prison visit ; type,6
+supernatural or ghost ; agentType,6
+"male, business or property owner ; agentType",6
+manager or agent in profession ; agentType,6
+meeting of committee ; type,6
+"military force, small or unspecified ; agentType",6
+"mission, religious, city ; type",6
+smoking by persona ; type,6
+"mission, social, men ; type",6
+"mission, social, women ; type",6
+"music, effect, response to ; type",6
+natural force other than storm ; agentType,6
+"needlework or sewing, necessary ; type",6
+"needlework or sewing, optional ; type",6
+"needlework or sewing, paid ; type",6
+smoking by agents ; type,6
+opponent or enemy ; agentType,6
+"service to family, housekeeping ; type",6
+patron of mistress ; agentType,6
+people of certain era ; agentType,6
+people of occupational type ; agentType,6
+petition or appeal ; type,6
+planning or plotting ; type,6
+pledge or promise ; type,6
+"political movement, women or gender ; type",6
+prediction or premonition as event ; type,6
+printer or publishing house ; locationStructure,6
+prison release or parole ; type,6
+"keeping records, log ; type",6
+protege or protegee ; agentType,6
+"institution managing, other than school ; type",6
+"crowd gathering, vigil, concern for someone ; type",6
+biographer other than narrator ; agentType,6
+benefactor or donor ; agentType,6
+clergyman or clergy ; agentType,6
+bathing or washing own body ; type,6
+bathing or washing body of others ; type,6
+barn or stable ; locationStructure,6
+ball or social dance event ; type,6
+"baby girl, unrelated ; agentType",6
+drinking alcohol by agents ; type,6
+discovery or contribution to science ; type,6
+"baby boy, unrelated ; agentType",6
+assignment or new responsibility ; type,6
+assailant or criminal ; agentType,6
+controversy in politics ; type,6
+controversy of policy or practice in organization ; type,6
+appointment to office ; type,6
+apparition or haunting ; type,6
+"animal, working ; agentType",6
+controversy of religious practice or affiliation ; type,6
+"animal, domestic or pet, unnamed ; agentType",6
+drinking alcohol by persona ; type,6
+"animal, domestic or pet, named ; agentType",6
+childhood or upbringing ; type,6
+"child or children, related ; agentType",6
+"character, fictional or imaginary ; agentType",6
+death or loss of father ; type,6
+death or loss of female relative ; type,6
+death or loss of child ; type,6
+change of title or position ; type,6
+death or loss of brother ; type,6
+death of animal ; type,6
+death or loss of male relative ; type,6
+caregiving other than nursing ; type,6
+"dinner, invited event ; type",6
+care for siblings other than nursing ; type,6
+care for parents other than nursing ; type,6
+death or loss of sister ; type,6
+death or loss of spouse ; type,6
+"calling or vocation choice, decision ; type",6
+"calling or vocation choice, considered ; type",6
+bureaucrat or bourgeois ; agentType,6
+decorating house ; type,6
+demonstration or march ; type,6
+"dining or meals, habitual ; type",6
+death or loss of mother ; type,6
+"education, untaught or lack of formal ; type",6
+"charity, personal action ; type",6
+adoption of child ; type,6
+abandonment by persona ; type,6
+exposure of identity or past ; type,6
+emigration or immigration ; type,6
+"adventure, persona innocent ; type",6
+enslaved person or persons ; agentType,6
+"abandonment by partner, lover or friend ; type",6
+abandonment by family ; type,6
+"United States, as traveler or immigrant ; locationSetting",6
+crime against persona ; type,6
+Sunday churchgoing or sabbath ; type,6
+admirers with access ; agentType,6
+accident harming others ; type,6
+famous man ; agentType,6
+famous woman ; agentType,6
+crime committed by persona ; type,6
+coup d'etat or government falling ; type,6
+fans or admirers without personal access ; agentType,6
+Society or elite ; agentType,6
+court of law ; locationStructure,6
+"England, as traveler or immigrant ; locationSetting",6
+emulation of agent ; type,6
+Spain ; locationSetting,7
+Japan ; locationSetting,7
+China ; locationSetting,7
+Russia ; locationSetting,7
+Asia ; locationSetting,7
+Africa ; locationSetting,7
+India ; locationSetting,7
+Germany ; locationSetting,7
+France ; locationSetting,7
+Europe or Continent ; locationSetting,7
+Canada ; locationSetting,7
+world ; agentType,7
+Italy ; locationSetting,7
+"corporate, political party ; agentType",8
+journalist ; agentType,8
+lawyer ; agentType,8
+"political movement, civil rights ; type",8
+"political leader, elected ; agentType",8
+"corporate, secular institution ; agentType",8
+"professor, educator, scholar ; agentType",8
+"corporate, religious ; agentType",8
+government building ; locationStructure,8
+"office, business ; locationStructure",8
+community ; agentType,8
+"corporate, government ; agentType",8
+mentor ; agentType,8
+"girl, unrelated, named ; agentType",9
+"male object, named ; agentType",9
+"daughters, group, named ; agentType",9
+"male superiors, group, named ; agentType",9
+"male coworker, named ; agentType",9
+"female coworker, named ; agentType",9
+"lover, male, named ; agentType",9
+"great grandfather, named ; agentType",9
+"European country, other named ; locationSetting",9
+"girls, unrelated, named group ; agentType",9
+"female superiors, group, named ; agentType",9
+"female object, named ; agentType",9
+"son, named ; agentType",9
+"brothers, group, named ; agentType",9
+"male servant, named ; agentType",9
+"female superior, named ; agentType",9
+"male superior, named ; agentType",9
+"boy, unrelated, named ; agentType",9
+"sisters, group, named ; agentType",9
+"male relative, named, other ; agentType",9
+"female servant, named ; agentType",9
+"lover, female, named ; agentType",9
+"boys, unrelated, named group ; agentType",9
+"female relative, named, other ; agentType",9
+"male professional, named ; agentType",9
+"sons, group, named ; agentType",9
+"nobleman, named ; agentType",9
+"noblewoman, named ; agentType",9
+"female professional, named ; agentType",9
+"daughter, named ; agentType",9
+conversion ; type,10
+childcare ; type,10
+"consultation, medical ; type",10
+"persecution, religious ; type",10
+coronation ; type,10
+"persecution, political ; type",10
+"persecution, gender or sexual ; type",10
+permission request ; type,10
+patient ; agentType,10
+permission refused ; type,10
+farming ; type,10
+natural disaster ; type,10
+childbirth ; type,10
+obedience or submission ; type,10
+"persecution, racial ; type",10
+permission granted ; type,10
+"charity, organized ; type",10
+assassination ; type,10
+seduction ; type,10
+arrival ; type,10
+"separation, informal ; type",10
+"separation, legal ; type",10
+arrest ; type,10
+"sexual assault, attempted rape ; type",10
+"sexual assault, rape ; type",10
+sexual intercourse ; type,10
+siege ; type,10
+slander ; type,10
+"adventure, persona initiated ; type",10
+adultery ; type,10
+spying ; type,10
+accident harming persona ; type,10
+surrender ; type,10
+threat ; type,10
+"war, civil ; type",10
+"travel, military deployment ; type",10
+treason ; type,10
+"trial, acquittal ; type",10
+sculpting ; type,10
+"research, scholarly inquiry ; type",10
+religious rite ; type,10
+"borrowing, lending money ; type",10
+"political movement, temperance ; type",10
+preaching ; type,10
+"carousing, disorderly conduct ; type",10
+profanity ; type,10
+campaign ; type,10
+"proposition, sexual ; type",10
+prostitution ; type,10
+"business failure, bankruptcy ; type",10
+publication ; type,10
+publicity ; type,10
+pilgrimage ; type,10
+punishment ; type,10
+receiving allowance ; type,10
+bribery ; type,10
+"recognition, building ; type",10
+"recognition, grave marker or tomb ; type",10
+"recognition, plaque ; type",10
+"recognition, portrait ; type",10
+"recognition, statue ; type",10
+"recognition, title ; type",10
+"recognition, window ; type",10
+"recognition, written praise ; type",10
+burial ; type,10
+"recognition, spoken praise ; type",10
+"operation, medical ; type",10
+"illness, mental ; type",10
+marital quarrel ; type,10
+"crowd gathering, spectacle ; type",10
+grieving ; type,10
+execution ; type,10
+human trafficking ; type,10
+"illness, nonfamily individual ; type",10
+"illness, persona's ; type",10
+"illness, recurrent or epidemic ; type",10
+departure ; type,10
+delusion or hallucination ; type,10
+duel ; type,10
+marriage proposal ; type,10
+flirtation ; type,10
+engagement ; type,10
+forfeiting property ; type,10
+forgiveness ; type,10
+election ; type,10
+insulting ; type,10
+invitation ; type,10
+writing religious tract ; type,10
+lobbying ; type,10
+legislation ; type,10
+founding organization ; type,10
+gambling ; type,10
+"eavesdropping, overhearing ; type",10
+marriage proposal refused ; type,10
+labor ; type,10
+"marriage, voluntary ; type",10
+courtship ; type,10
+"fainting, collapsing ; type",10
+"marriage, arranged ; type",10
+"experimentation, scientific ; type",10
+exile ; type,10
+divorce ; type,10
+disobedience ; type,10
+"mission, religious, foreign ; type",10
+"harassment, sexual ; type",10
+maternity ; type,10
+Ireland ; locationSetting,11
+Scotland ; locationSetting,11
+Australia ; locationSetting,11
+Wales ; locationSetting,11
+"girl, unrelated, unnamed ; agentType",12
+"daughters, group, unnamed ; agentType",12
+"brothers, group, unnamed ; agentType",12
+"stepfather, unnamed ; agentType",12
+"daughter, unnamed ; agentType",12
+"grandmother, unnamed ; agentType",12
+"sister, unnamed ; agentType",12
+"sons, group, unnamed ; agentType",12
+"father, unnamed ; agentType",12
+"son, unnamed ; agentType",12
+"uncle, unnamed ; agentType",12
+"aunt, unnamed ; agentType",12
+"mother, unnamed ; agentType",12
+"brother, unnamed ; agentType",12
+"noblewoman, unnamed ; agentType",12
+"sisters, group, unnamed ; agentType",12
+"grandfather, unnamed ; agentType",12
+"boy, unrelated, unnamed ; agentType",12
+"stepmother, unnamed ; agentType",12
+"nobleman, unnamed ; agentType",12
+"dishes, washing ; type",13
+laundry ; type,13
+hunting ; type,13
+riding ; type,13
+"running, recreational ; type",13
+camping ; type,13
+"hiking, climbing ; type",13
+honeymoon ; type,13
+gardening ; type,13
+sailing ; type,13
+"walking, recreational ; type",13
+swimming ; type,13
+ocean ; locationSetting,13
+"travel, recreational ; type",13
+boat ; locationStructure,13
+AD 271 ; dateSingle,14
+526 AD ; dateSingle,14
+534 AD ; dateSingle,14
+January 532 AD ; dateSingle,14
+"school, reformatory ; locationStructure",15
+"school, village ; locationStructure",15
+"school, other ; locationStructure",15
+"school, boarding ; locationStructure",15
+"school, arts ; locationStructure",15
+church ; locationStructure,15
+teacher ; agentType,15
+"school, public or state ; locationStructure",15
+student or students ; agentType,15
+"education, attending boarding school ; type",15
+"school, Sunday ; locationStructure",15
+lecture hall ; locationStructure,15
+library ; locationStructure,15
+university ; locationStructure,15
+"education, attending day school ; type",15
+interviewer ; agentType,16
+"female servant, unnamed ; agentType",16
+"female superior, unnamed ; agentType",16
+"female superiors, group, unnamed ; agentType",16
+"female professional, unnamed ; agentType",16
+"male superiors, group, unnamed ; agentType",16
+"female coworker, unnamed ; agentType",16
+"male superior, unnamed ; agentType",16
+"male servant, unnamed ; agentType",16
+"male relative, unnamed, other ; agentType",16
+"male professional, unnamed ; agentType",16
+"female object, unnamed ; agentType",16
+"girls, unrelated, unnamed group ; agentType",16
+"male object, unnamed ; agentType",16
+"male coworker, unnamed ; agentType",16
+"lover, male, unnamed ; agentType",16
+"lover, female, unnamed ; agentType",16
+"boys, unrelated, unnamed group ; agentType",16
+"female relative, unnamed, other ; agentType",16
+fall ; season,17
+falling in love ; type,17
+"baby boy, persona's ; agentType",17
+walking for work ; type,17
+"baby girl, persona's ; agentType",17
+The East ; locationSetting,17
+train ; locationStructure,17
+sister-in-law ; agentType,17
+"holidays, vacation or rest ; type",17
+winter ; season,17
+spring ; season,17
+women in general ; agentType,17
+"shop, food, coffee, tea ; locationStructure",17
+"Christmas Eve, 1878 ; dateSingle",17
+"shop, food ; locationStructure",17
+summer ; season,17
+24th of December ; dateSingle,17
+afternoon ; timeOfDay,17
+evening ; timeOfDay,17
+Sunday ; dateSingle,17
+wife of famous man ; agentType,17
+getting out of bed ; type,17
+road or highway ; locationSetting,17
+return to work ; type,17
+home of friends ; locationStructure,17
+Central or South America ; locationSetting,17
+brother-in-law ; agentType,17
+"public, the ; agentType",17
+lying in bed ; type,17
+bar or pub ; locationStructure,17
+day ; timeOfDay,17
+"people, the, town or village ; agentType",17
+"people, the, nation or region ; agentType",17
+"people, the town or village ; agentType",17
+people in general ; agentType,17
+open country ; locationSetting,17
+nursing in family home ; type,17
+night ; timeOfDay,17
+Between 1886 and 1890 ; dateSingle,17
+men in general ; agentType,17
+morning ; timeOfDay,17
+move to new house ; type,17
+move to new country ; type,17
+"move to new city, town, or village ; type",17
+house of the rich ; locationStructure,17
+house of the poor ; locationStructure,17
+"Christmas, 1827 ; dateSingle",17
+"home, persona's ; locationStructure",17
+"home, family or childhood ; locationStructure",17
+return to previous home ; type,17
+thanking ; type,18
+telling secret ; type,18
+telling lie ; type,18
+crying ; type,18
+other ; type,18
+cleaning house ; type,18
+church service ; type,18
+party ; type,18
+curse ; type,18
+Christmas ; type,18
+fire ; type,18
+scandal ; type,18
+escape ; type,18
+suicide attempt ; type,18
+suicide ; type,18
+rescue ; type,18
+hiding other person ; type,18
+begging ; type,18
+strike ; type,18
+waking ; type,18
+confession ; type,18
+reign ; type,18
+battle ; type,18
+dream or dreaming ; type,18
+riot ; type,18
+"running, emergency ; type",18
+"music playing, instrumental ; type",18
+victory ; type,18
+money making ; type,18
+"music, singing ; type",18
+unarrest ; type,18
+cooking ; type,18
+"mission, other ; type",18
+revolution ; type,18
+news ; type,18
+"travel, other ; type",18
+exercise ; type,18
+"crime, other ; type",18
+wandering ; type,18
+cross_dressing ; type,18
+wedding ; type,18
+conversation ; type,18
+performance ; type,18
+stranger ; agentType,18
+abdication ; type,18
+"games, playing ; type",18
+jilting ; type,18
+"death, nonfamily, girl ; type",18
+story_telling ; type,18
+"death, nonfamily, man ; type",18
+shopping ; type,18
+"death, nonfamily, woman ; type",18
+birth ; type,18
+"death, persona's ; type",18
+debate ; type,18
+gift giving ; type,18
+interview ; type,18
+"race, contest ; type",18
+debut ; type,18
+"argument, person-to-person ; type",18
+blessing ; type,18
+disguise ; type,18
+inheriting ; type,18
+selling ; type,18
+hugging ; type,18
+"death, nonfamily, boy ; type",18
+keeping secret ; type,18
+elopement ; type,18
+funeral ; type,18
+"dancing, performance ; type",18
+"dancing, social ; type",18
+bequeathing ; type,18
+making beds ; type,18
+driving ; type,18
+kissing ; type,18
+praying ; type,18
+laughing ; type,18
+love affair ; type,18
+sleeping ; type,18
+friendship with female ; type,18
+prison ; locationStructure,19
+"doctor, physician ; agentType",19
+farmer ; agentType,19
+"officer, military ; agentType",19
+industrial ; locationSetting,19
+frontier ; locationSetting,19
+prisoner ; agentType,19
+asylum ; locationStructure,19
+army ; agentType,19
+storm ; agentType,19
+"court, royal ; locationStructure",19
+navy ; agentType,19
+police ; agentType,19
+colony ; locationSetting,19
+lighthouse ; locationStructure,19
+field ; locationSetting,19
+cemetery ; locationStructure,19
+ship ; locationStructure,19
+province ; locationSetting,19
+narrator ; agentType,20
+wife ; agentType,21
+father ; agentType,21
+brother ; agentType,21
+neighbor or neighbors ; agentType,21
+nephew ; agentType,21
+niece ; agentType,21
+grandfather ; agentType,21
+aunt ; agentType,21
+siblings ; agentType,21
+mother ; agentType,21
+sister ; agentType,21
+"foster or adoptive father, named ; agentType",21
+fiance ; agentType,21
+husband ; agentType,21
+grandmother ; agentType,21
+uncle ; agentType,21
+friend ; agentType,21
+"foster or adoptive mother, named ; agentType",21
+boudoir ; locationStructure,22
+8 May 1788 ; dateSingle,23
+8 May ; dateSingle,23
+"14th May, 1847 ; dateSingle",23
+May ; dateSingle,23
+5th September 1838 ; dateSingle,24
+25 August 1870 ; dateSingle,24
+29th November 1872 ; dateSingle,24
+December 7 ; dateSingle,24
+"August, 1878 ; dateSingle",24
+"August 5, 1903 ; dateSingle",24
+August ; dateSingle,24
+"December 24, 1878 ; dateSingle",24
+September ; dateSingle,24
+November ; dateSingle,24
+November 4 ; dateSingle,24
+"November 29, 1832 ; dateSingle",24
+November 21 ; dateSingle,24
+"August 21, 1876 ; dateSingle",24
+14 December 1878 ; dateSingle,24
